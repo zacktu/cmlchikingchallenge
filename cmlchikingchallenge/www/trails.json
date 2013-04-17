@@ -1,6 +1,6 @@
 {
     "home": {
-        "figure": "<img src='images/hikingchallenge2.png' alt='Let's get some good shots.' class='flexible-image' />",
+        "figure": "<img src='img/hikingchallenge2.png' alt='Let's get some good shots.' class='flexible-image' />",
         "introduction": "<h1 class='center'>CMLC Hiking Challenge 2</h1><h2 class='center'>Explore. Discover. Preserve.</h2><p class='center'><strong>What You Do:</strong> Complete 8 Hikes<br /><strong>What you Get: </strong>Hiking Patch, Free Hiking Gear<br /><strong>Why You Should Do It: </strong>Have Fun, Support Land Conservation</p><p>Completers of the eight hikes will earn our unique white squirrel-themed embroidered hiking patch, a certificate of completion, recognition in our online and print publications, and a $20 gift certificate for hiking gear at Hendersonville's Mast General Store.</p>"
     },
     "trails": {

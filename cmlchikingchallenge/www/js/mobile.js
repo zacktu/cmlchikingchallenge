@@ -124,7 +124,7 @@ function buildTrailDirectionsPage(trailhead) {
 	$.getJSON("trails.json", trailhead, function (data) {
 		var trailDirectionsHTML = "<div class='myfigure-and-description'>";
 		trailDirectionsHTML += "<div class='myfigure'>";
-		trailDirectionsHTML += "<img src= 'images/" + data.trails[trailhead].trailImage + "' ";
+		trailDirectionsHTML += "<img src= 'img/" + data.trails[trailhead].trailImage + "' ";
 		trailDirectionsHTML += "alt='Map of the trail' class='flexible-image' />";
 		trailDirectionsHTML += "</div>"; // end myfigure
 		trailDirectionsHTML += "<div class='description'>";
