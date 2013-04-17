@@ -220,10 +220,12 @@ function initializeMapAndCalculateRoute(lat, lon) {
 	'use strict';
 	var directionsService = new google.maps.DirectionsService();
 	var currentPosition = new google.maps.LatLng(lat, lon);
+	/*****
 	if (!currentPosition) {
 		alert("Couldn't get your position -- back to Home.");
 		$.mobile.changePage($('../index.html'), {});
 	}
+	*****/
 	var mapOptions = {
 		zoom : 13,
 		center : currentPosition,
@@ -265,8 +267,10 @@ function initializeMapAndCalculateRoute(lat, lon) {
 function locError(error) {
 	'use strict';
 	// the current position could not be located
+	/****
 	alert("Couldn't get your position -- back to Home.");
 	$.mobile.changePage($('../index.html'), {});
+	******/
 } // end locError
 
 /*
