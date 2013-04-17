@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>CMLC Hiking Challenge</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+<!-- CSS FILES -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" />
+<link rel="stylesheet" href="css/my.css" />
+
+<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="js/jquery.min.1.8.3.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+<script type="text/javascript"
+	src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" charset="utf-8" src="js/mobile.js"></script>
+</head>
+
+<body>
+	<div data-role="page" data-theme="c" id="mapPage"
+		data-fullscreen="true">
+
+		<div data-role="content">
+			<div id="mapCanvas"></div>
+			<div id="stepCanvas"></div>
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer" class="myFooter" data-position="fixed"
+			data-tap-toggle="false">
+			<div data-role="navbar" class="myNavbar">
+				<ul>
+					<li><a href="select.html" data-direction="reverse"
+						data-theme="a">Select</a></li>
+					<li><a href="trailDirections.html?id=null" data-theme="a">Directions</a></li>
+					<li><a id="backward"> <img src="images/leftarrow.png"
+							alt="Left Arrow" class="ul-li-icon"></a></li>
+					<li><a id="forward"> <img src="images/rightarrow.png"
+							alt="Right Arrow" class="ul-li-icon"></a></li>
+					<li><a class="refresh">Map</a></li>
+				</ul>
+			</div>
+			<!-- /navbar -->
+		</div>
+		<!-- /footer -->
+	</div>
+	<!-- /mapPage -->
+
+</body>
+
+</html>
