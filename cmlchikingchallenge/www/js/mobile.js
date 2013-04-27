@@ -81,12 +81,14 @@ function subtractNextRouteStep() {
 function buildTrailSelectionList() {
 	'use strict';
 	// console.log("Entering buildTrailSelectionList");
+	var trailId = new String;
 	$.getJSON("trails.json", function (data) {
 		$('trailSelectionList li').remove();
 		$.each(data.trails, function (trailhead, trailInfo) {
+			trailId = $(this).attr('id');
 			var appendText =
-				'<li> <a href="trailDirections.html?id=' +
-				trailInfo.id + '">' +
+				'<li> <a href="#" id= ' + trailInfo.id + ' ' +
+				'onclick="linkClicked(\'' + trailId + '\')" >' +
 				'<h4>' + trailInfo.name + '</h4>' +
 				'</li>';
 			$('#trailSelectionList').append(appendText);
@@ -401,3 +403,7 @@ $('.refresh').live("click", function() {
 	$.mobile.changePage($('#mapPage'), {});
 	//console.log("Leaving .refresh.live.click");
 }); // end .refresh.live("click" ...
+
+function linkClicked(linkName) {
+	console.log("linkClicked: linkName is " + linkName);
+} // end linkClicked
