@@ -5,14 +5,14 @@
 
 /*global $, localStorage, console, navigator, alert, window, google, document */
 
-var stepDisplay,
-    stepArray = [];
+var stepArray = [];
 
 var globals = (function () {
 	'use strict';
 	var trailId,
 		zoomedMap,
-		myRoute;
+		myRoute,
+		stepDisplay;
 	return {
         setTrailId : function (id) {
         	'use strict';
@@ -35,7 +35,16 @@ var globals = (function () {
         	myRoute = mr;
         },
         getMyRoute : function() {
+        	'use strict';
         	return myRoute;
+        },
+        setStepDisplay : function(sd) {
+        	'use strict';
+        	stepDisplay = sd;
+        },
+        getStepDisplay : function() {
+        	'use strict';
+        	return stepDisplay;
         }
     };
 })();
@@ -137,6 +146,7 @@ function buildTrailDirectionsPage(trailhead) {
 function zoomToStep(stepNumber, text) {
 	'use strict';
 	// console.log("Entering zoomToStep with stepNumber = " + stepNumber);
+	var stepDisplay = globals.getStepDisplay();
 	var zoomedMap = globals.getZoomedMap();
 	var myRoute = globals.getMyRoute();
 	stepDisplay.setContent(text);
@@ -218,6 +228,7 @@ function initializeMapAndCalculateRoute(lat, lon) {
 	var currentPosition = new google.maps.LatLng(lat, lon);
 	var fullMap;
 	var newZoomedMap;
+	var stepDisplay;
 	if (!currentPosition) {
 		alert("Couldn't get your position -- is geolocation enabled?");
 		$.mobile.changePage($('#homePage'), {});
@@ -252,6 +263,7 @@ function initializeMapAndCalculateRoute(lat, lon) {
 
 	// Instantiate an infowindow to hold step text.
 	stepDisplay = new google.maps.InfoWindow();
+	globals.setStepDisplay(stepDisplay);
 
 	// calculate Route
 	calculateRoute(currentPosition, directionsService, fullDirectionsDisplay,
