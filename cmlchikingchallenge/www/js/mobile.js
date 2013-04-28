@@ -5,8 +5,7 @@
 
 /*global $, localStorage, console, navigator, alert, window, google, document */
 
-var fullMap,
-    zoomedMap,
+var zoomedMap,
     myRoute,
     stepDisplay,
     stepArray = [];
@@ -198,6 +197,7 @@ function initializeMapAndCalculateRoute(lat, lon) {
 	'use strict';
 	var directionsService = new google.maps.DirectionsService();
 	var currentPosition = new google.maps.LatLng(lat, lon);
+	var fullMap;
 	if (!currentPosition) {
 		alert("Couldn't get your position -- is geolocation enabled?");
 		$.mobile.changePage($('#homePage'), {});
