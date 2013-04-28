@@ -31,7 +31,6 @@ function error(msg) {
 	console.log("Entering error function with message: ", msg);
 }
 
-/****
 function setTrailheadName(thname) {
 	'use strict';
 	localStorage.setItem("trailheadName", thname);
@@ -41,7 +40,6 @@ function getTrailheadName() {
 	'use strict';
 	return localStorage.getItem("trailheadName");
 }
-*****/
 
 function settrailDirectionsHTML(content) {
 	'use strict';
@@ -139,7 +137,7 @@ function getUrlVars() {
  */
 function buildTrailDirectionsPage(trailhead) {
 	'use strict';
-	// console.log("Entering buildTrailDirectionsPage w/ trailhead = " + trailhead);
+	console.log("Entering buildTrailDirectionsPage w/ trailhead = " + trailhead);
 	$.getJSON("trails.json", trailhead, function (data) {
 		var trailDirectionsHTML = "<div class='myfigure-and-description'>";
 		trailDirectionsHTML += "<div class='myfigure'>";
@@ -152,8 +150,10 @@ function buildTrailDirectionsPage(trailhead) {
 		trailDirectionsHTML += data.trails[trailhead].hikingDirections + " ";
 		trailDirectionsHTML += "</div>"; // end description
 		trailDirectionsHTML += "</div>"; // end myfigure and description
-		//setTrailheadName(trailhead);
-		globals.setTrailId(trailhead);
+		setTrailheadName(trailhead);
+		//globals.setTrailId(trailhead);
+		console.log("buildTrailDirectionsPage: at bottom trailhead from globals is " +
+				globals.getTrailId());
 		settrailDirectionsHTML(trailDirectionsHTML);
 		$('#trailDirectionsPageCONTENT').html(trailDirectionsHTML);
 	});
@@ -205,8 +205,9 @@ function calculateRoute(currentPosition, directionsService,
 	for (var i = 0; i < stepArray.length; i++) {
 		stepArray[i].setMap(null);
 	}
-	//var trailhead = getTrailheadName();
-	var trailhead = globals.getTrailId();
+	var trailhead = getTrailheadName();
+	//var trailhead = globals.getTrailId();
+	console.log("calculateRoute: trailhead is " + trailhead);
 	$.getJSON("trails.json", function(data) {
 		var targetDestination = new google.maps.LatLng(
 			data.trails[trailhead].latitude,
@@ -243,7 +244,7 @@ function initializeMapAndCalculateRoute(lat, lon) {
 	var currentPosition = new google.maps.LatLng(lat, lon);
 	if (!currentPosition) {
 		alert("Couldn't get your position -- is geolocation enabled?");
-		$.mobile.changePage($('../index.html'), {});
+		$.mobile.changePage($('#homePage'), {});
 	}
 	var mapOptions = {
 		zoom : 13,
@@ -287,7 +288,7 @@ function locError(error) {
 	'use strict';
 	// the current position could not be located
 	alert("Couldn't get your position -- is geolocation enabled?");
-	$.mobile.changePage($('../index.html'), {});
+	$.mobile.changePage($('#homePage'), {});
 } // end locError
 
 /*
@@ -370,6 +371,7 @@ $('#trailDirectionsPage').live("pageshow", function() {
 	// "id" is appended to the url of the page
 	//var trailhead = getUrlVars()["id"];
 	var trailhead = globals.getTrailId();
+	console.log("trailDirectionsPage.live pageshow: trailhead = " + trailhead);
 	// "null" is a special case that I have created to indicate that I'm
 	// returning back to trailDirectionsPage so I can use the directions
 	// in local storage.
