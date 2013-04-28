@@ -91,13 +91,46 @@
                     <li><a href="#selectPage" rel="external"
                         data-direction="reverse" 
                         data-theme="a">Select</a></li>
-                    <li><a href="mapPage.html" class="refresh" data-theme="a">
+                    <li><a href="#mapPage" class="refresh" data-theme="a">
                         Map </a>
                     </li>
 				</ul>
 			</div>
+			<!--  /navbar -->
 		</div>
+		<!--  /footer -->
 	</div>
-	
+	<!--  /trailDirectionsPage -->
+
+	<div data-role="page" data-theme="c" id="mapPage"
+		data-fullscreen="true">
+
+		<div data-role="content">
+			<div id="mapCanvas"></div>
+			<div id="stepCanvas"></div>
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer" class="myFooter" data-position="fixed"
+			data-tap-toggle="false">
+			<div data-role="navbar" class="myNavbar">
+				<ul>
+					<li><a href="#selectPage data-direction="reverse"
+						data-theme="a">Select</a></li>
+					<li><a href="#trailDirectionsPage" data-theme="a">
+						Directions</a></li>
+					<li><a id="backward"> <img src="img/leftarrow.png"
+							alt="Left Arrow" class="ul-li-icon"></a></li>
+					<li><a id="forward"> <img src="img/rightarrow.png"
+							alt="Right Arrow" class="ul-li-icon"></a></li>
+					<li><a class="refresh">Map</a></li>
+				</ul>
+			</div>
+			<!-- /navbar -->
+		</div>
+		<!-- /footer -->
+	</div>
+	<!-- /mapPage -->
+
 </body>
 </html>

@@ -367,7 +367,7 @@ $('#selectPage').live('pageinit', function(event) {
  */
 $('#trailDirectionsPage').live("pageshow", function() {
 	'use strict';
-	// console.log("Entering trailDirectionsPage.pageshow.function");
+	console.log("Entering trailDirectionsPage.pageshow.function");
 	// "id" is appended to the url of the page
 	//var trailhead = getUrlVars()["id"];
 	var trailhead = globals.getTrailId();
