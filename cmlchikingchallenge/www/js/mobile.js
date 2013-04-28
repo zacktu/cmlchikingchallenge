@@ -31,16 +31,6 @@ function error(msg) {
 	console.log("Entering error function with message: ", msg);
 }
 
-function settrailDirectionsHTML(content) {
-	'use strict';
-	localStorage.setItem("trailDirectionsPageHTML", content);
-}
-
-function gettrailDirectionsHTML() {
-	'use strict';
-	return localStorage.getItem("trailDirectionsPageHTML");
-}
-
 function setMyRouteSteps(length) {
 	'use strict';
 	// console.log("Entering setMyRouteSteps.");
@@ -122,7 +112,6 @@ function buildTrailDirectionsPage(trailhead) {
 		trailDirectionsHTML += "</div>"; // end description
 		trailDirectionsHTML += "</div>"; // end myfigure and description
 		globals.setTrailId(trailhead);
-		settrailDirectionsHTML(trailDirectionsHTML);
 		$('#trailDirectionsPageCONTENT').html(trailDirectionsHTML);
 	});
 	// console.log("Leaving buildTrailDirectionsPage");
