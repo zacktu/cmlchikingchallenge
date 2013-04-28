@@ -31,6 +31,7 @@ function error(msg) {
 	console.log("Entering error function with message: ", msg);
 }
 
+/****
 function setTrailheadName(thname) {
 	'use strict';
 	localStorage.setItem("trailheadName", thname);
@@ -40,6 +41,7 @@ function getTrailheadName() {
 	'use strict';
 	return localStorage.getItem("trailheadName");
 }
+*****/
 
 function settrailDirectionsHTML(content) {
 	'use strict';
@@ -150,8 +152,8 @@ function buildTrailDirectionsPage(trailhead) {
 		trailDirectionsHTML += data.trails[trailhead].hikingDirections + " ";
 		trailDirectionsHTML += "</div>"; // end description
 		trailDirectionsHTML += "</div>"; // end myfigure and description
-		setTrailheadName(trailhead);
-		//globals.setTrailId(trailhead);
+		//setTrailheadName(trailhead);
+		globals.setTrailId(trailhead);
 		console.log("buildTrailDirectionsPage: at bottom trailhead from globals is " +
 				globals.getTrailId());
 		settrailDirectionsHTML(trailDirectionsHTML);
@@ -205,8 +207,8 @@ function calculateRoute(currentPosition, directionsService,
 	for (var i = 0; i < stepArray.length; i++) {
 		stepArray[i].setMap(null);
 	}
-	var trailhead = getTrailheadName();
-	//var trailhead = globals.getTrailId();
+	//var trailhead = getTrailheadName();
+	var trailhead = globals.getTrailId();
 	console.log("calculateRoute: trailhead is " + trailhead);
 	$.getJSON("trails.json", function(data) {
 		var targetDestination = new google.maps.LatLng(
