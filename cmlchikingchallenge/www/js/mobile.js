@@ -31,18 +31,6 @@ function error(msg) {
 	console.log("Entering error function with message: ", msg);
 }
 
-/****
-function setTrailheadName(thname) {
-	'use strict';
-	localStorage.setItem("trailheadName", thname);
-}
-
-function getTrailheadName() {
-	'use strict';
-	return localStorage.getItem("trailheadName");
-}
-*****/
-
 function settrailDirectionsHTML(content) {
 	'use strict';
 	localStorage.setItem("trailDirectionsPageHTML", content);
@@ -116,30 +104,11 @@ function buildTrailSelectionList() {
 } // end buildTrailSelectionList
 
 /*
- * g e t U r l V a r s
- */
-function getUrlVars() {
-	'use strict';
-	// console.log("Entering getUrlVars");
-	var vars = [], hash;
-	var hashes = window.location.href.slice(
-			window.location.href.indexOf('?') + 1
-		).split('&');
-	for (var i = 0; i < hashes.length; i++) {
-		hash = hashes[i].split('=');
-		vars.push(hash[0]);
-		vars[hash[0]] = hash[1];
-	}
-	//console.log("Leaving getUrlVars -- will return " + vars);
-	return vars;
-} // end getUrlVars
-
-/*
  * b u i l d T r a i l D i r e c t i o n s P a g e
  */
 function buildTrailDirectionsPage(trailhead) {
 	'use strict';
-	console.log("Entering buildTrailDirectionsPage w/ trailhead = " + trailhead);
+	// console.log("Entering buildTrailDirectionsPage w/ trailhead = " + trailhead);
 	$.getJSON("trails.json", trailhead, function (data) {
 		var trailDirectionsHTML = "<div class='myfigure-and-description'>";
 		trailDirectionsHTML += "<div class='myfigure'>";
@@ -152,10 +121,7 @@ function buildTrailDirectionsPage(trailhead) {
 		trailDirectionsHTML += data.trails[trailhead].hikingDirections + " ";
 		trailDirectionsHTML += "</div>"; // end description
 		trailDirectionsHTML += "</div>"; // end myfigure and description
-		//setTrailheadName(trailhead);
 		globals.setTrailId(trailhead);
-		console.log("buildTrailDirectionsPage: at bottom trailhead from globals is " +
-				globals.getTrailId());
 		settrailDirectionsHTML(trailDirectionsHTML);
 		$('#trailDirectionsPageCONTENT').html(trailDirectionsHTML);
 	});
@@ -209,7 +175,6 @@ function calculateRoute(currentPosition, directionsService,
 	}
 	//var trailhead = getTrailheadName();
 	var trailhead = globals.getTrailId();
-	console.log("calculateRoute: trailhead is " + trailhead);
 	$.getJSON("trails.json", function(data) {
 		var targetDestination = new google.maps.LatLng(
 			data.trails[trailhead].latitude,
@@ -369,19 +334,9 @@ $('#selectPage').live('pageinit', function(event) {
  */
 $('#trailDirectionsPage').live("pageshow", function() {
 	'use strict';
-	console.log("Entering trailDirectionsPage.pageshow.function");
-	// "id" is appended to the url of the page
-	//var trailhead = getUrlVars()["id"];
+	//console.log("Entering trailDirectionsPage.pageshow.function");
 	var trailhead = globals.getTrailId();
-	console.log("trailDirectionsPage.live pageshow: trailhead = " + trailhead);
-	// "null" is a special case that I have created to indicate that I'm
-	// returning back to trailDirectionsPage so I can use the directions
-	// in local storage.
-	if (trailhead == "null") {
-		$('#trailDirectionsPageCONTENT').html(gettrailDirectionsHTML());
-	} else {
-		buildTrailDirectionsPage(trailhead);
-	}
+	buildTrailDirectionsPage(trailhead);
 	// console.log("Leaving trailDirectionsPage.pageshow");
 }); // end #trailDirectionsPage.live("pageshow" ...
 
@@ -422,16 +377,14 @@ $("#mapPage").live("pageshow", function() {
 $('.refresh').live("click", function() {
 	'use strict';
 	//console.log("Entering .refresh.live.click");
-	//navigator.geolocation.getCurrentPosition(locSuccess, locError);
 	$('#mapCanvas').show();
 	$.mobile.changePage($('#mapPage'), {});
 	//console.log("Leaving .refresh.live.click");
 }); // end .refresh.live("click" ...
 
 function trailLinkClicked(trailId) {
-	console.log("trailLinkClicked: trailid is " + trailId);
+	//console.log("trailLinkClicked: trailid is " + trailId);
 	globals.setTrailId(trailId);
-	console.log("trailLinkclicked: global value is " + globals.getTrailId());
 	$.mobile.changePage($('#trailDirectionsPage'), {});
 } // end linkClickedlistingNumber
 
