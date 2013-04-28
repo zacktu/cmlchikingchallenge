@@ -5,14 +5,13 @@
 
 /*global $, localStorage, console, navigator, alert, window, google, document */
 
-var stepArray = [];
-
 var globals = (function () {
 	'use strict';
 	var trailId,
 		zoomedMap,
 		myRoute,
-		stepDisplay;
+		stepDisplay,
+		stepArray = [];
 	return {
         setTrailId : function (id) {
         	'use strict';
@@ -45,6 +44,14 @@ var globals = (function () {
         getStepDisplay : function() {
         	'use strict';
         	return stepDisplay;
+        },
+        setStepArray : function(sa) {
+        	'use strict';
+        	stepArray = sa;
+        },
+        getStepArray : function() {
+        	'use strict';
+        	return stepArray;
         }
     };
 })();
@@ -149,6 +156,7 @@ function zoomToStep(stepNumber, text) {
 	var stepDisplay = globals.getStepDisplay();
 	var zoomedMap = globals.getZoomedMap();
 	var myRoute = globals.getMyRoute();
+	var stepArray = globals.getStepArray();
 	stepDisplay.setContent(text);
 	zoomedMap.panTo(myRoute.steps[stepNumber].start_location);
 	stepDisplay.open(zoomedMap, stepArray[stepNumber]);
@@ -166,6 +174,7 @@ function buildStepArray(directionResult) {
 	// can keep track of it and remove it when calculating a new route.
 	var zoomedMap = globals.getZoomedMap();
 	var myRoute = directionResult.routes[0].legs[0];
+	var stepArray = [];
 	setMyRouteSteps(myRoute.steps.length);
 	for (var i = 0; i < myRoute.steps.length; i++) {
 		var marker = new google.maps.Marker({
@@ -176,6 +185,7 @@ function buildStepArray(directionResult) {
 		stepArray[i] = marker;
 	}
 	globals.setMyRoute(myRoute);
+	globals.setStepArray(stepArray);
 	// console.log("Leaving buildStepArray");
 } // end buildStepArray
 
@@ -187,10 +197,11 @@ function calculateRoute(currentPosition, directionsService,
 	'use strict';
 	// console.log("Entering calculateRoute");
 	// Clear out entries in stepArray before building new directions
+	var stepArray = globals.getStepArray();
 	for (var i = 0; i < stepArray.length; i++) {
 		stepArray[i].setMap(null);
 	}
-	//var trailhead = getTrailheadName();
+	globals.setStepArray(stepArray);
 	var trailhead = globals.getTrailId();
 	$.getJSON("trails.json", function(data) {
 		var targetDestination = new google.maps.LatLng(
