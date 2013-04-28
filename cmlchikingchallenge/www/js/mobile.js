@@ -11,6 +11,21 @@ var fullMap,
     stepDisplay,
     stepArray = [];
 
+var globals = (function () {
+	'use strict';
+	var trailId;
+	return {
+        setTrailId : function (id) {
+        	'use strict';
+            trailId = id;
+        },
+        getTrailId : function () {
+        	'use strict';
+            return trailId;
+        }
+    };
+})();
+
 function error(msg) {
 	'use strict';
 	console.log("Entering error function with message: ", msg);
@@ -88,7 +103,7 @@ function buildTrailSelectionList() {
 			trailId = $(this).attr('id');
 			var appendText =
 				'<li> <a href="#" id= ' + trailInfo.id + ' ' +
-				'onclick="linkClicked(\'' + trailId + '\')" >' +
+				'onclick="trailLinkClicked(\'' + trailId + '\')" >' +
 				'<h4>' + trailInfo.name + '</h4>' +
 				'</li>';
 			$('#trailSelectionList').append(appendText);
@@ -404,6 +419,9 @@ $('.refresh').live("click", function() {
 	//console.log("Leaving .refresh.live.click");
 }); // end .refresh.live("click" ...
 
-function linkClicked(linkName) {
-	console.log("linkClicked: linkName is " + linkName);
-} // end linkClicked
+function trailLinkClicked(trailId) {
+	console.log("trailLinkClicked: trailid is " + trailId);
+	globals.setTrailId(trailId);
+	console.log("trailLinkclicked: global value is " + globals.getTrailId());
+} // end linkClickedlistingNumber
+
