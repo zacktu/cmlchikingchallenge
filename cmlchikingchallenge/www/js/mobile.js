@@ -5,14 +5,14 @@
 
 /*global $, localStorage, console, navigator, alert, window, google, document */
 
-var zoomedMap,
-    myRoute,
+var myRoute,
     stepDisplay,
     stepArray = [];
 
 var globals = (function () {
 	'use strict';
-	var trailId = null;
+	var trailId,
+		zoomedMap;
 	return {
         setTrailId : function (id) {
         	'use strict';
@@ -21,6 +21,13 @@ var globals = (function () {
         getTrailId : function () {
         	'use strict';
             return trailId;
+        },
+        setZoomedMap : function(zm) {
+        	'use strict';
+        	zoomedMap = zm;
+        },
+        getZoomedMap : function() {
+        	return zoomedMap;
         }
     };
 })();
@@ -122,6 +129,7 @@ function buildTrailDirectionsPage(trailhead) {
 function zoomToStep(stepNumber, text) {
 	'use strict';
 	// console.log("Entering zoomToStep with stepNumber = " + stepNumber);
+	var zoomedMap = globals.getZoomedMap();
 	stepDisplay.setContent(text);
 	zoomedMap.panTo(myRoute.steps[stepNumber].start_location);
 	stepDisplay.open(zoomedMap, stepArray[stepNumber]);
@@ -137,6 +145,7 @@ function buildStepArray(directionResult) {
 	// For each step, build step data and addd the text to the step's
 	// info window. Also, attach the step data to an arry so we
 	// can keep track of it and remove it when calculating a new route.
+	var zoomedMap = globals.getZoomedMap();
 	myRoute = directionResult.routes[0].legs[0];
 	setMyRouteSteps(myRoute.steps.length);
 	for (var i = 0; i < myRoute.steps.length; i++) {
@@ -198,6 +207,7 @@ function initializeMapAndCalculateRoute(lat, lon) {
 	var directionsService = new google.maps.DirectionsService();
 	var currentPosition = new google.maps.LatLng(lat, lon);
 	var fullMap;
+	var newZoomedMap;
 	if (!currentPosition) {
 		alert("Couldn't get your position -- is geolocation enabled?");
 		$.mobile.changePage($('#homePage'), {});
@@ -220,12 +230,13 @@ function initializeMapAndCalculateRoute(lat, lon) {
 		preserveViewport : true,
 		mapTypeId : google.maps.MapTypeId.ROADMAP
 	};
-	zoomedMap = new google.maps.Map(document.getElementById('stepCanvas'),
+	newZoomedMap = new google.maps.Map(document.getElementById('stepCanvas'),
 			mapOptions);
 	rendererOptions = {
 		preserveViewport : true,
-		map : zoomedMap
+		map : newZoomedMap
 	};
+	globals.setZoomedMap(newZoomedMap);
 	var stepDirectionsDisplay = new google.maps.DirectionsRenderer(
 			rendererOptions);
 
