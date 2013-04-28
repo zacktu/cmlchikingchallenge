@@ -40,7 +40,7 @@
 			data-tap-toggle="false">
 			<div data-role="navbar" class="myNavbar">
 				<ul>
-					<li><a href="select.html" rel="external"> Select</a></li>
+					<li><a href="#selectPage" rel="external"> Select</a></li>
 				</ul>
 			</div>
 			<!--  /navbar -->
@@ -48,6 +48,34 @@
 		<!-- /footer -->
 	</div>
 	<!-- /homePage -->
+
+	<div data-role="page" id="selectPage">
+		<div data-role="header" class="myHeader" data-theme="b">
+			<h1 class="shadowed-text">Select</h1>
+		</div>
+		<!-- /header -->
+		<div data-role="content">
+			<div class="selectionList" data-theme="a">
+				<h2>Select:</h2>
+                <ul id="trailSelectionList" data-role="listview" 
+                        data-inset="true">
+				</ul>
+			</div>
+			<!-- /selectionList -->
+		</div>
+		<!-- /content -->
+		<div data-role="footer" class="myFooter" data-position="fixed"
+			data-tap-toggle="false">
+			<div data-role="navbar" class="myNavbar">
+				<ul>
+					<li><a href="#homePage" data-theme="a">Home</a></li>
+				</ul>
+			</div>
+			<!--  /navbar -->
+		</div>
+		<!-- /footer -->
+	</div>
+	<!-- /selectPage -->
 
 </body>
 </html>
