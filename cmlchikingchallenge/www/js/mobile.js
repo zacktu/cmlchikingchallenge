@@ -5,14 +5,14 @@
 
 /*global $, localStorage, console, navigator, alert, window, google, document */
 
-var myRoute,
-    stepDisplay,
+var stepDisplay,
     stepArray = [];
 
 var globals = (function () {
 	'use strict';
 	var trailId,
-		zoomedMap;
+		zoomedMap,
+		myRoute;
 	return {
         setTrailId : function (id) {
         	'use strict';
@@ -27,7 +27,15 @@ var globals = (function () {
         	zoomedMap = zm;
         },
         getZoomedMap : function() {
+        	'use strict';
         	return zoomedMap;
+        },
+        setMyRoute : function(mr) {
+        	'use strinct';
+        	myRoute = mr;
+        },
+        getMyRoute : function() {
+        	return myRoute;
         }
     };
 })();
@@ -130,6 +138,7 @@ function zoomToStep(stepNumber, text) {
 	'use strict';
 	// console.log("Entering zoomToStep with stepNumber = " + stepNumber);
 	var zoomedMap = globals.getZoomedMap();
+	var myRoute = globals.getMyRoute();
 	stepDisplay.setContent(text);
 	zoomedMap.panTo(myRoute.steps[stepNumber].start_location);
 	stepDisplay.open(zoomedMap, stepArray[stepNumber]);
@@ -146,7 +155,7 @@ function buildStepArray(directionResult) {
 	// info window. Also, attach the step data to an arry so we
 	// can keep track of it and remove it when calculating a new route.
 	var zoomedMap = globals.getZoomedMap();
-	myRoute = directionResult.routes[0].legs[0];
+	var myRoute = directionResult.routes[0].legs[0];
 	setMyRouteSteps(myRoute.steps.length);
 	for (var i = 0; i < myRoute.steps.length; i++) {
 		var marker = new google.maps.Marker({
@@ -156,6 +165,7 @@ function buildStepArray(directionResult) {
 		marker.setVisible(false);
 		stepArray[i] = marker;
 	}
+	globals.setMyRoute(myRoute);
 	// console.log("Leaving buildStepArray");
 } // end buildStepArray
 
@@ -279,6 +289,7 @@ function insertDistance(stepNum) {
 	// Google. There was a line spacing problem, so there are several
 	// special cases here.
 	// console.log("Entering insertDistance");
+	var myRoute = globals.getMyRoute();
 	var instructions = myRoute.steps[stepNum].instructions;
 	var distance = myRoute.steps[stepNum].distance.text;
 	var directionsIndex = instructions.indexOf("Destination");
