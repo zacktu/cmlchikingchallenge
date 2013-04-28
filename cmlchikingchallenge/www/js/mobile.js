@@ -13,7 +13,7 @@ var fullMap,
 
 var globals = (function () {
 	'use strict';
-	var trailId;
+	var trailId = null;
 	return {
         setTrailId : function (id) {
         	'use strict';
@@ -364,7 +364,8 @@ $('#trailDirectionsPage').live("pageshow", function() {
 	'use strict';
 	// console.log("Entering trailDirectionsPage.pageshow.function");
 	// "id" is appended to the url of the page
-	var trailhead = getUrlVars()["id"];
+	//var trailhead = getUrlVars()["id"];
+	var trailhead = globals.getTrailId();
 	// "null" is a special case that I have created to indicate that I'm
 	// returning back to trailDirectionsPage so I can use the directions
 	// in local storage.
@@ -423,5 +424,6 @@ function trailLinkClicked(trailId) {
 	console.log("trailLinkClicked: trailid is " + trailId);
 	globals.setTrailId(trailId);
 	console.log("trailLinkclicked: global value is " + globals.getTrailId());
+	$.mobile.changePage($('#trailDirectionsPage'), {});
 } // end linkClickedlistingNumber
 
