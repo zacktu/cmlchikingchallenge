@@ -433,7 +433,7 @@ $('.refresh').live("click", function() {
 }); // end .refresh.live("click" ...
 
 function trailLinkClicked(trailId) {
-	//console.log("trailLinkClicked: trailid is " + trailId);
+	//console.log("trailLinkClicked: trailId is " + trailId);
 	globals.setTrailId(trailId);
 	$.mobile.changePage($('#trailDirectionsPage'), {});
 } // end linkClickedlistingNumber
@@ -441,5 +441,5 @@ function trailLinkClicked(trailId) {
 $('#googleMaps').live('click', function() {
 	var myTrailId = globals.getTrailId();
 	console.log("googleMaps.live.click: trailId is " + myTrailId);
-	location.href = "https://maps.google.com";
+	location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
 }); // end #googleMaps.live('click' ...)
