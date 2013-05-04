@@ -21,6 +21,22 @@ var globals = (function () {
         	'use strict';
             return trailId;
         },
+        setLatitude : function (lat) {
+        	'use strict';
+            latitude = lat;
+        },
+        getLatitude : function () {
+        	'use strict';
+            return latitude;
+        },
+        setLongitude : function (long) {
+        	'use strict';
+            longitude = long;
+        },
+        getLongitude : function () {
+        	'use strict';
+            return longitude;
+        },
         setZoomedMap : function(zm) {
         	'use strict';
         	zoomedMap = zm;
