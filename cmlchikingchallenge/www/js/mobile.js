@@ -422,3 +422,8 @@ function trailLinkClicked(trailId) {
 	$.mobile.changePage($('#trailDirectionsPage'), {});
 } // end linkClickedlistingNumber
 
+$('#googleMaps').live('click', function() {
+	var myTrailId = globals.getTrailId();
+	console.log("googleMaps.live.click: trailId is " + myTrailId);
+	location.href = "https://maps.google.com";
+}); // end #googleMaps.live('click' ...)
