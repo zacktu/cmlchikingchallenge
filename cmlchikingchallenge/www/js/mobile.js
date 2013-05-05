@@ -467,6 +467,20 @@ function trailLinkClicked(trailId) {
 } // end linkClickedlistingNumber
 
 $('#googleMaps').live('click', function() {
-	navigator.geolocation.getCurrentPosition(locSuccess, locError);
-	console.log("googleMaps.live.click: returned from getCurrentPosition");
+	var myTrailId = globals.getTrailId(),
+		destinationLatitude,
+		destinationLongitude;
+	console.log("googleMaps.live.click: trailId is " + myTrailId);
+	$.getJSON("trails.json", function(data) {
+		destinationLatitude = data.trails[myTrailId].latitude;
+		destinationLongitude = data.trails[myTrailId].longitude;
+		console.log("locSuccess: destinationLatitude = " + destinationLatitude);
+		console.log("locSuccess: destinationLongitude = " + destinationLongitude);
+		console.log("googleMaps.live.click: this is where we show the map");
+		//location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
+		location.href = "https://maps.google.com/?q=loc:" + 
+			destinationLatitude + "+" + destinationLongitude;
+	});
+	//navigator.geolocation.getCurrentPosition(locSuccess, locError);
+	//console.log("googleMaps.live.click: returned from getCurrentPosition");
 }); // end #googleMaps.live('click' ...)
