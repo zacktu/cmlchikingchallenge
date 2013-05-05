@@ -314,8 +314,12 @@ function locSuccess(position) {
 	'use strict';
 	// initialize map with current position and calculate the route
 	// console.log("Entering locSuccess");
+	console.log("locSuccess: latitude = " + position.coords.latitude);
+	console.log("locSuccess: longitude = " + position.coords.longitude);
+	/***
 	initializeMapAndCalculateRoute(position.coords.latitude,
 			position.coords.longitude);
+	*****/
 	// console.log("Leaving locSucess");
 } // end locSuccess
 
@@ -441,5 +445,6 @@ function trailLinkClicked(trailId) {
 $('#googleMaps').live('click', function() {
 	var myTrailId = globals.getTrailId();
 	console.log("googleMaps.live.click: trailId is " + myTrailId);
-	location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
+	console.log("googleMaps.live.click: this is where we show the map");
+	//location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
 }); // end #googleMaps.live('click' ...)
