@@ -471,6 +471,8 @@ $('#googleMaps').live('click', function() {
 		destinationLatitude,
 		destinationLongitude;
 	console.log("googleMaps.live.click: trailId is " + myTrailId);
+	alert("After reaching the trailhead you can press the Android return " +
+			"button to return to the trail instructions.");
 	$.getJSON("trails.json", function(data) {
 		destinationLatitude = data.trails[myTrailId].latitude;
 		destinationLongitude = data.trails[myTrailId].longitude;
