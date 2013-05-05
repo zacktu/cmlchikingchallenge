@@ -8,6 +8,8 @@
 var globals = (function () {
 	'use strict';
 	var trailId,
+		latitude,
+		longitude,
 		zoomedMap,
 		myRoute,
 		stepDisplay,
@@ -23,6 +25,7 @@ var globals = (function () {
         },
         setLatitude : function (lat) {
         	'use strict';
+        	console.log("setLatitude: entered with lat = " + lat);
             latitude = lat;
         },
         getLatitude : function () {
@@ -316,6 +319,8 @@ function locSuccess(position) {
 	// console.log("Entering locSuccess");
 	console.log("locSuccess: latitude = " + position.coords.latitude);
 	console.log("locSuccess: longitude = " + position.coords.longitude);
+	globals.setLatitude(position.coords.latitude);
+	console.log("locSuccess: returned from setLatitude");
 	/***
 	initializeMapAndCalculateRoute(position.coords.latitude,
 			position.coords.longitude);
