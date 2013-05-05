@@ -445,6 +445,8 @@ function trailLinkClicked(trailId) {
 $('#googleMaps').live('click', function() {
 	var myTrailId = globals.getTrailId();
 	console.log("googleMaps.live.click: trailId is " + myTrailId);
+	navigator.geolocation.getCurrentPosition(locSuccess, locError);
+	console.log("googleMaps.live.click: returned from getCurrentPosition");
 	console.log("googleMaps.live.click: this is where we show the map");
 	//location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
 }); // end #googleMaps.live('click' ...)
