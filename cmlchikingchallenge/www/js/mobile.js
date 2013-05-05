@@ -320,7 +320,9 @@ function locSuccess(position) {
 	console.log("locSuccess: latitude = " + position.coords.latitude);
 	console.log("locSuccess: longitude = " + position.coords.longitude);
 	console.log("googleMaps.live.click: this is where we show the map");
-	//location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
+	location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
+	location.href = "https://maps.google.com/?q=loc:" + 
+		position.coords.latitude + "+" + position.coords.longitude;
 	/****
 	globals.setLatitude(position.coords.latitude);
 	console.log("locSuccess: returned from setLatitude");
