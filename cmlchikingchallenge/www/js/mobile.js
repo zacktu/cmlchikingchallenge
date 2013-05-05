@@ -319,10 +319,14 @@ function locSuccess(position) {
 	// console.log("Entering locSuccess");
 	console.log("locSuccess: latitude = " + position.coords.latitude);
 	console.log("locSuccess: longitude = " + position.coords.longitude);
+	console.log("googleMaps.live.click: this is where we show the map");
+	//location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
+	/****
 	globals.setLatitude(position.coords.latitude);
 	console.log("locSuccess: returned from setLatitude");
 	globals.setLongitude(position.coords.longitude);
 	console.log("locSuccess: returned from setLongitude");
+	****/
 	/***
 	initializeMapAndCalculateRoute(position.coords.latitude,
 			position.coords.longitude);
@@ -454,6 +458,4 @@ $('#googleMaps').live('click', function() {
 	console.log("googleMaps.live.click: trailId is " + myTrailId);
 	navigator.geolocation.getCurrentPosition(locSuccess, locError);
 	console.log("googleMaps.live.click: returned from getCurrentPosition");
-	console.log("googleMaps.live.click: this is where we show the map");
-	//location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
 }); // end #googleMaps.live('click' ...)
