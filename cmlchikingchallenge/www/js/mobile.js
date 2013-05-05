@@ -330,10 +330,8 @@ function locSuccess(position) {
 		console.log("locSuccess: destinationLongitude = " + destinationLongitude);
 		console.log("googleMaps.live.click: this is where we show the map");
 		//location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
-		/***
 		location.href = "https://maps.google.com/?q=loc:" + 
-			position.coords.latitude + "+" + position.coords.longitude;
-		****/
+			destinationLatitude + "+" + destinationLongitude;
 	});
 
 	/****
