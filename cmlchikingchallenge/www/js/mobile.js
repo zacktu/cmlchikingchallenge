@@ -321,6 +321,8 @@ function locSuccess(position) {
 	console.log("locSuccess: longitude = " + position.coords.longitude);
 	globals.setLatitude(position.coords.latitude);
 	console.log("locSuccess: returned from setLatitude");
+	globals.setLongitude(position.coords.longitude);
+	console.log("locSuccess: returned from setLongitude");
 	/***
 	initializeMapAndCalculateRoute(position.coords.latitude,
 			position.coords.longitude);
