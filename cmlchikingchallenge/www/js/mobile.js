@@ -106,17 +106,6 @@ $('#trailDirectionsPage').live("pageshow", function() {
 	// console.log("Leaving trailDirectionsPage.pageshow");
 }); // end #trailDirectionsPage.live("pageshow" ...
 
-/*
- * . r e f r e s h -- c l i c k
- */
-/*$('.refresh').live("click", function() {
-	'use strict';
-	//console.log("Entering .refresh.live.click");
-	$('#mapCanvas').show();
-	$.mobile.changePage($('#mapPage'), {});
-	//console.log("Leaving .refresh.live.click");
-}); // end .refresh.live("click" ...
-*/
 function trailLinkClicked(trailId) {
 	//console.log("trailLinkClicked: trailId is " + trailId);
 	globals.setTrailId(trailId);
