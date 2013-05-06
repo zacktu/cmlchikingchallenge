@@ -8,14 +8,6 @@
 var globals = (function () {
 	'use strict';
 	var trailId;
-		/****
-		latitude,
-		longitude,
-		zoomedMap,
-		myRoute,
-		stepDisplay,
-		stepArray = [];
-		*****/
 	return {
         setTrailId : function (id) {
         	'use strict';
@@ -25,58 +17,6 @@ var globals = (function () {
         	'use strict';
             return trailId;
         }
-        /*****
-        },
-        setLatitude : function (lat) {
-        	'use strict';
-        	console.log("setLatitude: entered with lat = " + lat);
-            latitude = lat;
-        },
-        getLatitude : function () {
-        	'use strict';
-            return latitude;
-        },
-        setLongitude : function (long) {
-        	'use strict';
-            longitude = long;
-        },
-        getLongitude : function () {
-        	'use strict';
-            return longitude;
-        },
-        setZoomedMap : function(zm) {
-        	'use strict';
-        	zoomedMap = zm;
-        },
-        getZoomedMap : function() {
-        	'use strict';
-        	return zoomedMap;
-        },
-        setMyRoute : function(mr) {
-        	'use strinct';
-        	myRoute = mr;
-        },
-        getMyRoute : function() {
-        	'use strict';
-        	return myRoute;
-        },
-        setStepDisplay : function(sd) {
-        	'use strict';
-        	stepDisplay = sd;
-        },
-        getStepDisplay : function() {
-        	'use strict';
-        	return stepDisplay;
-        },
-        setStepArray : function(sa) {
-        	'use strict';
-        	stepArray = sa;
-        },
-        getStepArray : function() {
-        	'use strict';
-        	return stepArray;
-        }
-        ******/
     };
 })();
 
@@ -84,51 +24,6 @@ function error(msg) {
 	'use strict';
 	console.log("Entering error function with message: ", msg);
 }
-
-/****
-function setMyRouteSteps(length) {
-	'use strict';
-	// console.log("Entering setMyRouteSteps.");
-	localStorage.setItem("maxSteps", Number(length));
-	localStorage.setItem("stepNumber", Number(0));
-	// console.log("Leaving setMyRouteSteps");
-}
-*****/
-
-/*
- * a d d N e x t R o u t e S t e p
- */
-/****
-function addNextRouteStep() {
-	'use strict';
-	// console.log("Entering addNextRouteStep");
-	var thisStep = localStorage.getItem("stepNumber");
-	var arrayLength = localStorage.getItem("maxSteps");
-	var nextStep = Number(thisStep) + Number(1);
-	if (nextStep < arrayLength) {
-		localStorage.setItem("stepNumber", nextStep);
-	}
-	// console.log("Leaving addNextRouteStep");
-	return (thisStep);
-}
-*****/
-
-/*
- * s u b t r a c t N e x t R o u t e S t e p
- */
-/****
-function subtractNextRouteStep() {
-	'use strict';
-	// console.log("Entering subtractNextRouteStep");
-	var thisStep = localStorage.getItem("stepNumber");
-	var nextStep = Number(thisStep) - Number(1);
-	if (nextStep >= 0) {
-		localStorage.setItem("stepNumber", nextStep);
-	}
-	// console.log("Leaving subtractNextRouteStep");
-	return (thisStep);
-} // end subtractNextRouteStep
-*****/
 
 /*
  * b u i l d T r a i l S e l e c t i o n L i s t
