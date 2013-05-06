@@ -7,13 +7,15 @@
 
 var globals = (function () {
 	'use strict';
-	var trailId,
+	var trailId;
+		/****
 		latitude,
 		longitude,
 		zoomedMap,
 		myRoute,
 		stepDisplay,
 		stepArray = [];
+		*****/
 	return {
         setTrailId : function (id) {
         	'use strict';
@@ -22,6 +24,8 @@ var globals = (function () {
         getTrailId : function () {
         	'use strict';
             return trailId;
+        }
+        /*****
         },
         setLatitude : function (lat) {
         	'use strict';
@@ -72,6 +76,7 @@ var globals = (function () {
         	'use strict';
         	return stepArray;
         }
+        ******/
     };
 })();
 
