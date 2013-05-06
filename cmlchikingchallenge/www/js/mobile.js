@@ -80,6 +80,7 @@ function error(msg) {
 	console.log("Entering error function with message: ", msg);
 }
 
+/****
 function setMyRouteSteps(length) {
 	'use strict';
 	// console.log("Entering setMyRouteSteps.");
@@ -87,10 +88,12 @@ function setMyRouteSteps(length) {
 	localStorage.setItem("stepNumber", Number(0));
 	// console.log("Leaving setMyRouteSteps");
 }
+*****/
 
 /*
  * a d d N e x t R o u t e S t e p
  */
+/****
 function addNextRouteStep() {
 	'use strict';
 	// console.log("Entering addNextRouteStep");
@@ -103,10 +106,12 @@ function addNextRouteStep() {
 	// console.log("Leaving addNextRouteStep");
 	return (thisStep);
 }
+*****/
 
 /*
  * s u b t r a c t N e x t R o u t e S t e p
  */
+/****
 function subtractNextRouteStep() {
 	'use strict';
 	// console.log("Entering subtractNextRouteStep");
@@ -118,6 +123,7 @@ function subtractNextRouteStep() {
 	// console.log("Leaving subtractNextRouteStep");
 	return (thisStep);
 } // end subtractNextRouteStep
+*****/
 
 /*
  * b u i l d T r a i l S e l e c t i o n L i s t
@@ -185,7 +191,7 @@ function zoomToStep(stepNumber, text) {
 /*
  * b u i l d S t e p A r r a y
  */
-function buildStepArray(directionResult) {
+/*function buildStepArray(directionResult) {
 	'use strict';
 	// console.log("Entering buildStepArray");
 	// For each step, build step data and addd the text to the step's
@@ -207,11 +213,11 @@ function buildStepArray(directionResult) {
 	globals.setStepArray(stepArray);
 	// console.log("Leaving buildStepArray");
 } // end buildStepArray
-
+*/
 /*
  * c a l c u l a t e R o u t e
  */
-function calculateRoute(currentPosition, directionsService,
+/*function calculateRoute(currentPosition, directionsService,
 		fullDirectionsDisplay, stepDirectionsDisplay) {
 	'use strict';
 	// console.log("Entering calculateRoute");
@@ -248,11 +254,11 @@ function calculateRoute(currentPosition, directionsService,
 	}); // end getJSON
 	// console.log("Leaving calculateRoute");
 } // end calculateRoute
-
+*/
 /*
  * i n i t i a l i z e M a p A n d C a l c u l a t e R o u t e
  */
-function initializeMapAndCalculateRoute(lat, lon) {
+/*function initializeMapAndCalculateRoute(lat, lon) {
 	'use strict';
 	var directionsService = new google.maps.DirectionsService();
 	var currentPosition = new google.maps.LatLng(lat, lon);
@@ -299,21 +305,21 @@ function initializeMapAndCalculateRoute(lat, lon) {
 	calculateRoute(currentPosition, directionsService, fullDirectionsDisplay,
 			stepDirectionsDisplay);
 } // end initializeMapAndCalculateRoute
-
+*/
 /*
  * l o c E r r o r
  */
-function locError(error) {
+/*function locError(error) {
 	'use strict';
 	// the current position could not be located
 	alert("Couldn't get your position -- is geolocation enabled?");
 	$.mobile.changePage($('#homePage'), {});
 } // end locError
-
+*/
 /*
  * l o c S u c c e s s
  */
-function locSuccess(position) {
+/*function locSuccess(position) {
 	'use strict';
 	var destinationLatitude,
 		destinationLongitude;
@@ -337,23 +343,23 @@ function locSuccess(position) {
 		location.href = temphref;
 	});
 
-	/****
+	*//****
 	globals.setLatitude(position.coords.latitude);
 	console.log("locSuccess: returned from setLatitude");
 	globals.setLongitude(position.coords.longitude);
 	console.log("locSuccess: returned from setLongitude");
-	****/
-	/***
+	****//*
+	*//***
 	initializeMapAndCalculateRoute(position.coords.latitude,
 			position.coords.longitude);
-	*****/
+	*****//*
 	// console.log("Leaving locSucess");
 } // end locSuccess
-
+*/
 /*
  * i n s e r t D i s t a n c e
  */
-function insertDistance(stepNum) {
+/*function insertDistance(stepNum) {
 	'use strict';
 	// Insert the driving distance into the instructions that come from
 	// Google. There was a line spacing problem, so there are several
@@ -386,7 +392,7 @@ function insertDistance(stepNum) {
 	}
 	// console.log("Leaving insertDistance");
 } // end insertDistance
-
+*/
 /*
  * # h o m e P a g e - p a g e i n i t
  */
@@ -424,7 +430,7 @@ $('#trailDirectionsPage').live("pageshow", function() {
 /*
  * # m a p P a g e - p a g e i n i t
  */
-$("#mapPage").live("pageinit", function() {
+/*$("#mapPage").live("pageinit", function() {
 	'use strict';
 	// find current position -- if success initialize map and calculate route
 	// console.log("Entering mapPage.live.pageinit");
@@ -440,29 +446,29 @@ $("#mapPage").live("pageinit", function() {
 	});
 	// console.log("Leaving mapPage.live.pageinit");
 }); // end #mapPage.live("pageinit" ...
-
+*/
 /*
  * # m a p P a g e -- p a g e s h o w
  */
-$("#mapPage").live("pageshow", function() {
+/*$("#mapPage").live("pageshow", function() {
 	'use strict';
 	// find current position -- if success initialize map and calculate route
 	// console.log("Entering mapPage.live.pageshow");
 	navigator.geolocation.getCurrentPosition(locSuccess, locError);
 	// console.log("Leaving mapPage.live.pageshow");
 }); // end #mappage.live.pageshow ...
-
+*/
 /*
  * . r e f r e s h -- c l i c k
  */
-$('.refresh').live("click", function() {
+/*$('.refresh').live("click", function() {
 	'use strict';
 	//console.log("Entering .refresh.live.click");
 	$('#mapCanvas').show();
 	$.mobile.changePage($('#mapPage'), {});
 	//console.log("Leaving .refresh.live.click");
 }); // end .refresh.live("click" ...
-
+*/
 function trailLinkClicked(trailId) {
 	//console.log("trailLinkClicked: trailId is " + trailId);
 	globals.setTrailId(trailId);
