@@ -89,47 +89,6 @@ function zoomToStep(stepNumber, text) {
 } // end zoomToStep
 
 /*
- * c a l c u l a t e R o u t e
- */
-/*function calculateRoute(currentPosition, directionsService,
-		fullDirectionsDisplay, stepDirectionsDisplay) {
-	'use strict';
-	// console.log("Entering calculateRoute");
-	// Clear out entries in stepArray before building new directions
-	var stepArray = globals.getStepArray();
-	for (var i = 0; i < stepArray.length; i++) {
-		stepArray[i].setMap(null);
-	}
-	globals.setStepArray(stepArray);
-	var trailhead = globals.getTrailId();
-	$.getJSON("trails.json", function(data) {
-		var targetDestination = new google.maps.LatLng(
-			data.trails[trailhead].latitude,
-			data.trails[trailhead].longitude
-		);
-		if ((!(currentPosition == '')) && (!(targetDestination == ''))) {
-			var request = {
-				origin : currentPosition,
-				destination : targetDestination,
-				travelMode : google.maps.TravelMode.DRIVING
-			};
-			directionsService.route(request, function(response, status) {
-				if (status == google.maps.DirectionsStatus.OK) {
-					fullDirectionsDisplay.setDirections(response);
-				}
-			});
-			directionsService.route(request, function(response, status) {
-				if (status == google.maps.DirectionsStatus.OK) {
-					stepDirectionsDisplay.setDirections(response);
-					buildStepArray(response);
-				}
-			}); // end directionsService.route ...
-		} // end if
-	}); // end getJSON
-	// console.log("Leaving calculateRoute");
-} // end calculateRoute
-*/
-/*
  * i n i t i a l i z e M a p A n d C a l c u l a t e R o u t e
  */
 /*function initializeMapAndCalculateRoute(lat, lon) {
