@@ -89,57 +89,6 @@ function zoomToStep(stepNumber, text) {
 } // end zoomToStep
 
 /*
- * i n i t i a l i z e M a p A n d C a l c u l a t e R o u t e
- */
-/*function initializeMapAndCalculateRoute(lat, lon) {
-	'use strict';
-	var directionsService = new google.maps.DirectionsService();
-	var currentPosition = new google.maps.LatLng(lat, lon);
-	var fullMap;
-	var newZoomedMap;
-	var stepDisplay;
-	if (!currentPosition) {
-		alert("Couldn't get your position -- is geolocation enabled?");
-		$.mobile.changePage($('#homePage'), {});
-	}
-	var mapOptions = {
-		zoom : 13,
-		center : currentPosition,
-		mapTypeId : google.maps.MapTypeId.ROADMAP
-	};
-	fullMap = new google.maps.Map(document.getElementById('mapCanvas'),
-			mapOptions);
-	var rendererOptions = {
-		map : fullMap
-	};
-	var fullDirectionsDisplay = new google.maps.DirectionsRenderer(
-			rendererOptions);
-	mapOptions = {
-		zoom : 25,
-		center : currentPosition,
-		preserveViewport : true,
-		mapTypeId : google.maps.MapTypeId.ROADMAP
-	};
-	newZoomedMap = new google.maps.Map(document.getElementById('stepCanvas'),
-			mapOptions);
-	rendererOptions = {
-		preserveViewport : true,
-		map : newZoomedMap
-	};
-	globals.setZoomedMap(newZoomedMap);
-	var stepDirectionsDisplay = new google.maps.DirectionsRenderer(
-			rendererOptions);
-
-	// Instantiate an infowindow to hold step text.
-	stepDisplay = new google.maps.InfoWindow();
-	globals.setStepDisplay(stepDisplay);
-
-	// calculate Route
-	calculateRoute(currentPosition, directionsService, fullDirectionsDisplay,
-			stepDirectionsDisplay);
-} // end initializeMapAndCalculateRoute
-*/
-/*
  * l o c E r r o r
  */
 /*function locError(error) {
