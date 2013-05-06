@@ -89,56 +89,6 @@ function zoomToStep(stepNumber, text) {
 } // end zoomToStep
 
 /*
- * l o c E r r o r
- */
-/*function locError(error) {
-	'use strict';
-	// the current position could not be located
-	alert("Couldn't get your position -- is geolocation enabled?");
-	$.mobile.changePage($('#homePage'), {});
-} // end locError
-*/
-/*
- * l o c S u c c e s s
- */
-/*function locSuccess(position) {
-	'use strict';
-	var destinationLatitude,
-		destinationLongitude;
-	var myTrailId = globals.getTrailId();
-	// initialize map with current position and calculate the route
-	// console.log("Entering locSuccess");
-	console.log("locSuccess: latitude = " + position.coords.latitude);
-	console.log("locSuccess: longitude = " + position.coords.longitude);
-	console.log("googleMaps.live.click: trailId is " + myTrailId);
-	$.getJSON("trails.json", function(data) {
-		destinationLatitude = data.trails[myTrailId].latitude;
-		destinationLongitude = data.trails[myTrailId].longitude;
-		console.log("locSuccess: destinationLatitude = " + destinationLatitude);
-		console.log("locSuccess: destinationLongitude = " + destinationLongitude);
-		console.log("googleMaps.live.click: this is where we show the map");
-		//location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
-		var temphref = "https://maps.google.com/?q=loc:" + 
-			destinationLatitude + "+" + destinationLongitude + 
-			"+(XXXXXXX)";
-		console.log("googleMaps.live.click: temphref = " + temphref);
-		location.href = temphref;
-	});
-
-	*//****
-	globals.setLatitude(position.coords.latitude);
-	console.log("locSuccess: returned from setLatitude");
-	globals.setLongitude(position.coords.longitude);
-	console.log("locSuccess: returned from setLongitude");
-	****//*
-	*//***
-	initializeMapAndCalculateRoute(position.coords.latitude,
-			position.coords.longitude);
-	*****//*
-	// console.log("Leaving locSucess");
-} // end locSuccess
-*/
-/*
  * i n s e r t D i s t a n c e
  */
 /*function insertDistance(stepNum) {
