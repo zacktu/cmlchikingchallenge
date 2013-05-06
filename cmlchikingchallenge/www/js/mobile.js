@@ -107,37 +107,6 @@ $('#trailDirectionsPage').live("pageshow", function() {
 }); // end #trailDirectionsPage.live("pageshow" ...
 
 /*
- * # m a p P a g e - p a g e i n i t
- */
-/*$("#mapPage").live("pageinit", function() {
-	'use strict';
-	// find current position -- if success initialize map and calculate route
-	// console.log("Entering mapPage.live.pageinit");
-	$('#forward').live("click", function() {
-		$('#mapCanvas').hide();
-		var stepNum = addNextRouteStep();
-		zoomToStep(stepNum, insertDistance(stepNum));
-	});
-	$('#backward').live("click", function() {
-		$('#mapCanvas').hide();
-		var stepNum = subtractNextRouteStep();
-		zoomToStep(stepNum, insertDistance(stepNum));
-	});
-	// console.log("Leaving mapPage.live.pageinit");
-}); // end #mapPage.live("pageinit" ...
-*/
-/*
- * # m a p P a g e -- p a g e s h o w
- */
-/*$("#mapPage").live("pageshow", function() {
-	'use strict';
-	// find current position -- if success initialize map and calculate route
-	// console.log("Entering mapPage.live.pageshow");
-	navigator.geolocation.getCurrentPosition(locSuccess, locError);
-	// console.log("Leaving mapPage.live.pageshow");
-}); // end #mappage.live.pageshow ...
-*/
-/*
  * . r e f r e s h -- c l i c k
  */
 /*$('.refresh').live("click", function() {
