@@ -73,59 +73,6 @@ function buildTrailDirectionsPage(trailhead) {
 } // end buildTrailDirectionsPage
 
 /*
- * z o o m T o S t e p
- */
-function zoomToStep(stepNumber, text) {
-	'use strict';
-	// console.log("Entering zoomToStep with stepNumber = " + stepNumber);
-	var stepDisplay = globals.getStepDisplay();
-	var zoomedMap = globals.getZoomedMap();
-	var myRoute = globals.getMyRoute();
-	var stepArray = globals.getStepArray();
-	stepDisplay.setContent(text);
-	zoomedMap.panTo(myRoute.steps[stepNumber].start_location);
-	stepDisplay.open(zoomedMap, stepArray[stepNumber]);
-	// console.log("Leaving zoomToStep");
-} // end zoomToStep
-
-/*
- * i n s e r t D i s t a n c e
- */
-/*function insertDistance(stepNum) {
-	'use strict';
-	// Insert the driving distance into the instructions that come from
-	// Google. There was a line spacing problem, so there are several
-	// special cases here.
-	// console.log("Entering insertDistance");
-	var myRoute = globals.getMyRoute();
-	var instructions = myRoute.steps[stepNum].instructions;
-	var distance = myRoute.steps[stepNum].distance.text;
-	var directionsIndex = instructions.indexOf("Destination");
-	var driveLine = "Drive <b>" + distance + "</b>";
-	var returnText;
-	if (directionsIndex < 0) {
-		returnText = instructions;
-		if (instructions.indexOf("Continue") > 0) {
-			returnText += driveLine;
-		} else {
-			returnText += "<br>" + driveLine;
-		}
-		return returnText;
-	} else {
-		// insert driving distance before anything else
-		returnText = instructions.slice(0, directionsIndex - 29);
-		if (instructions.indexOf("Continue") > 0) {
-			returnText += driveLine;
-		} else {
-			returnText += "<br>" + driveLine;
-		}
-		returnText += instructions.slice(directionsIndex - 29);
-		return returnText;
-	}
-	// console.log("Leaving insertDistance");
-} // end insertDistance
-*/
-/*
  * # h o m e P a g e - p a g e i n i t
  */
 $('#homePage').live('pageinit', function() {
