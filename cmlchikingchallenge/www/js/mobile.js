@@ -106,12 +106,18 @@ $('#trailDirectionsPage').live("pageshow", function() {
 	// console.log("Leaving trailDirectionsPage.pageshow");
 }); // end #trailDirectionsPage.live("pageshow" ...
 
+/*
+ * t r a i l L i n k C l i c k e d
+ */
 function trailLinkClicked(trailId) {
 	//console.log("trailLinkClicked: trailId is " + trailId);
 	globals.setTrailId(trailId);
 	$.mobile.changePage($('#trailDirectionsPage'), {});
 } // end linkClickedlistingNumber
 
+/*
+ * # g o o g l e M a p s - c l i c k
+ */
 $('#googleMaps').live('click', function() {
 	var myTrailId = globals.getTrailId(),
 		destinationLatitude,
