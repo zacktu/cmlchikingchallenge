@@ -39,7 +39,7 @@ function buildTrailSelectionList() {
 			var appendText =
 				'<li> <a href="#" id= ' + trailInfo.id + ' ' +
 				'onclick="trailLinkClicked(\'' + trailId + '\')" >' +
-				'<h4>' + trailInfo.name + '</h4>' +
+				trailInfo.name +
 				'</li>';
 			$('#trailSelectionList').append(appendText);
 		});
@@ -88,32 +88,6 @@ function zoomToStep(stepNumber, text) {
 	// console.log("Leaving zoomToStep");
 } // end zoomToStep
 
-/*
- * b u i l d S t e p A r r a y
- */
-/*function buildStepArray(directionResult) {
-	'use strict';
-	// console.log("Entering buildStepArray");
-	// For each step, build step data and addd the text to the step's
-	// info window. Also, attach the step data to an arry so we
-	// can keep track of it and remove it when calculating a new route.
-	var zoomedMap = globals.getZoomedMap();
-	var myRoute = directionResult.routes[0].legs[0];
-	var stepArray = [];
-	setMyRouteSteps(myRoute.steps.length);
-	for (var i = 0; i < myRoute.steps.length; i++) {
-		var marker = new google.maps.Marker({
-			position : myRoute.steps[i].start_location,
-			map : zoomedMap
-		});
-		marker.setVisible(false);
-		stepArray[i] = marker;
-	}
-	globals.setMyRoute(myRoute);
-	globals.setStepArray(stepArray);
-	// console.log("Leaving buildStepArray");
-} // end buildStepArray
-*/
 /*
  * c a l c u l a t e R o u t e
  */
