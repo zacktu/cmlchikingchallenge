@@ -54,8 +54,10 @@ function buildTrailSelectionList() {
 function buildTrailDirectionsPage(trailhead) {
 	'use strict';
 	// console.log("Entering buildTrailDirectionsPage w/ trailhead = " + trailhead);
+	var trailDirectionsHTML;
 	$.getJSON("trails.json", trailhead, function (data) {
-		var trailDirectionsHTML = "<div class='myfigure-and-description'>";
+		globals.setTrailId(trailhead);
+		trailDirectionsHTML = "<div class='myfigure-and-description'>";
 		trailDirectionsHTML += "<div class='myfigure'>";
 		trailDirectionsHTML += "<img src= 'img/" + data.trails[trailhead].trailImage + "' ";
 		trailDirectionsHTML += "alt='Map of the trail' class='flexible-image' />";
@@ -66,7 +68,6 @@ function buildTrailDirectionsPage(trailhead) {
 		trailDirectionsHTML += data.trails[trailhead].hikingDirections + " ";
 		trailDirectionsHTML += "</div>"; // end description
 		trailDirectionsHTML += "</div>"; // end myfigure and description
-		globals.setTrailId(trailhead);
 		localStorage.setItem("trailDirectionsHTML", trailDirectionsHTML);
 		$('#trailDirectionsPageCONTENT').html(trailDirectionsHTML);
 	});
