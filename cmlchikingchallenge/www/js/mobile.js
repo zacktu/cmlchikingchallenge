@@ -67,6 +67,7 @@ function buildTrailDirectionsPage(trailhead) {
 		trailDirectionsHTML += "</div>"; // end description
 		trailDirectionsHTML += "</div>"; // end myfigure and description
 		globals.setTrailId(trailhead);
+		localStorage.setItem("trailDirectionsHTML", trailDirectionsHTML);
 		$('#trailDirectionsPageCONTENT').html(trailDirectionsHTML);
 	});
 	// console.log("Leaving buildTrailDirectionsPage");
@@ -105,6 +106,7 @@ $('#trailDirectionsPage').live("pageshow", function() {
 	var trailhead = globals.getTrailId();
 	alert("trailDirectionsPage.pageshow: newTrail = " + localStorage.getItem("newTrail"));
 	var myNewTrail = localStorage.getItem("newTrail");
+	var myTrailDirectionsHTML;
 	console.log("trailDirectionsPage.pageshow: myNewTrail = " + myNewTrail);
 	if (myNewTrail > 0) {
 		alert("trailDirectionsPage.pageshow: so build trailDirectionsPage");
@@ -113,6 +115,9 @@ $('#trailDirectionsPage').live("pageshow", function() {
 		alert("trailDirectionsPage.pageshow: have built trailDirections page and set newTrail to " + localStorage.getItem("newTrail"));
 	} else {
 		alert("Need to refresh the trail directions page");
+		myTrailDirectionsHTML = localStorage.getItem("trailDirectionsHTML");
+		$('#trailDirectionsPageCONTENT').html(myTrailDirectionsHTML);
+
 	}
 	// console.log("Leaving trailDirectionsPage.pageshow");
 }); // end #trailDirectionsPage.live("pageshow" ...
