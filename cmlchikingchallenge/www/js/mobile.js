@@ -7,7 +7,8 @@
 
 var globals = (function () {
 	'use strict';
-	var trailId;
+	var trailId,
+		newTrail;
 	return {
         setTrailId : function (id) {
         	'use strict';
@@ -16,6 +17,14 @@ var globals = (function () {
         getTrailId : function () {
         	'use strict';
             return trailId;
+        },
+        setNewTrail : function (val) {
+        	'use strict';
+            newTrail = val;
+        },
+        testNewTrail : function () {
+        	'use strict';
+            return newTrail;
         }
     };
 })();
@@ -91,6 +100,7 @@ $('#homePage').live('pageinit', function() {
 $('#selectPage').live('pageinit', function(event) {
 	'use strict';
 	// console.log("Entering selectPage pageinit");
+	globals.setNewTrail(true);
 	buildTrailSelectionList();
 	// console.log("Leaving selectPage pageinit");
 });
@@ -102,6 +112,7 @@ $('#trailDirectionsPage').live("pageshow", function() {
 	'use strict';
 	//console.log("Entering trailDirectionsPage.pageshow.function");
 	var trailhead = globals.getTrailId();
+	console.log("trailDirectionsPage.pageshow: newTrail is " + globals.testNewTrail());
 	buildTrailDirectionsPage(trailhead);
 	// console.log("Leaving trailDirectionsPage.pageshow");
 }); // end #trailDirectionsPage.live("pageshow" ...
@@ -137,7 +148,7 @@ $('#googleMaps').live('click', function() {
 			destinationLatitude + "+" + destinationLongitude +
 			"+(" + destinationName + ")";
 		console.log("googleMaps.live.click: temphref = " + temphref);
-		location.href = temphref;
+		//location.href = temphref;
 	});
 	//navigator.geolocation.getCurrentPosition(locSuccess, locError);
 	//console.log("googleMaps.live.click: returned from getCurrentPosition");
