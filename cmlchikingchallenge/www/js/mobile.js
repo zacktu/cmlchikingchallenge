@@ -141,10 +141,8 @@ $('#googleMaps').live('click', function() {
 		destinationLatitude = data.trails[myTrailId].latitude;
 		destinationLongitude = data.trails[myTrailId].longitude;
 		destinationName = data.trails[myTrailId].name;
-		//location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
-		var temphref = "https://maps.google.com/?q=loc:" + 
+		location.href = "https://maps.google.com/?q=loc:" + 
 			destinationLatitude + "+" + destinationLongitude +
 			"+(" + destinationName + ")";
-		location.href = temphref;
 	});
 }); // end #googleMaps.live('click' ...)
