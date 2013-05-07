@@ -105,17 +105,17 @@ $('#trailDirectionsPage').live("pageshow", function() {
 	'use strict';
 	//console.log("Entering trailDirectionsPage.pageshow.function");
 	var trailhead = globals.getTrailId();
-	alert("trailDirectionsPage.pageshow: newTrail = " + localStorage.getItem("newTrail"));
+	// alert("trailDirectionsPage.pageshow: newTrail = " + localStorage.getItem("newTrail"));
 	var myNewTrail = localStorage.getItem("newTrail");
 	var myTrailDirectionsHTML;
 	console.log("trailDirectionsPage.pageshow: myNewTrail = " + myNewTrail);
 	if (myNewTrail > 0) {
-		alert("trailDirectionsPage.pageshow: so build trailDirectionsPage");
+		// alert("trailDirectionsPage.pageshow: so build trailDirectionsPage");
 		localStorage.setItem("newTrail", Number(0));
 		buildTrailDirectionsPage(trailhead);
-		alert("trailDirectionsPage.pageshow: have built trailDirections page and set newTrail to " + localStorage.getItem("newTrail"));
+		// alert("trailDirectionsPage.pageshow: have built trailDirections page and set newTrail to " + localStorage.getItem("newTrail"));
 	} else {
-		alert("Need to refresh the trail directions page");
+		// alert("Need to refresh the trail directions page");
 		myTrailDirectionsHTML = localStorage.getItem("trailDirectionsHTML");
 		$('#trailDirectionsPageCONTENT').html(myTrailDirectionsHTML);
 
@@ -140,8 +140,9 @@ $('#googleMaps').live('click', function() {
 		destinationLatitude,
 		destinationLongitude;
 	console.log("googleMaps.live.click: trailId is " + myTrailId);
-	alert("After reaching the trailhead you can press the Android return " +
-			"button to return to the trail instructions.");
+	alert("Android users should use their device's Back button to return to "+
+			"the trail directions; iPhone users should use their browser's " +
+			"Back arrow.");
 	$.getJSON("trails.json", function(data) {
 		destinationLatitude = data.trails[myTrailId].latitude;
 		destinationLongitude = data.trails[myTrailId].longitude;
