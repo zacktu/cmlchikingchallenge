@@ -107,7 +107,6 @@ $('#trailDirectionsPage').live("pageshow", function() {
 	var trailhead = globals.getTrailId();
 	var myNewTrail = localStorage.getItem("newTrail");
 	var myTrailDirectionsHTML;
-	// console.log("trailDirectionsPage.pageshow: myNewTrail = " + myNewTrail);
 	if (myNewTrail > 0) {
 		localStorage.setItem("newTrail", Number(0));
 		buildTrailDirectionsPage(trailhead);
@@ -135,7 +134,6 @@ $('#googleMaps').live('click', function() {
 	var myTrailId = globals.getTrailId(),
 		destinationLatitude,
 		destinationLongitude;
-	// console.log("googleMaps.live.click: trailId is " + myTrailId);
 	alert("Android users navigating with Google Maps may use their " +
 			"device's Back button to view the trail directions.  " +
 			"Browser users may use their browser's Back arrow.");
@@ -143,16 +141,10 @@ $('#googleMaps').live('click', function() {
 		destinationLatitude = data.trails[myTrailId].latitude;
 		destinationLongitude = data.trails[myTrailId].longitude;
 		destinationName = data.trails[myTrailId].name;
-		// console.log("locSuccess: destinationLatitude = " + destinationLatitude);
-		// console.log("locSuccess: destinationLongitude = " + destinationLongitude);
-		// console.log("googleMaps.live.click: this is where we show the map");
 		//location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
 		var temphref = "https://maps.google.com/?q=loc:" + 
 			destinationLatitude + "+" + destinationLongitude +
 			"+(" + destinationName + ")";
-		// console.log("googleMaps.live.click: temphref = " + temphref);
 		location.href = temphref;
 	});
-	//navigator.geolocation.getCurrentPosition(locSuccess, locError);
-	// console.log("googleMaps.live.click: returned from getCurrentPosition");
 }); // end #googleMaps.live('click' ...)
