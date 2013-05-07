@@ -7,8 +7,7 @@
 
 var globals = (function () {
 	'use strict';
-	var trailId,
-		newTrail;
+	var trailId;
 	return {
         setTrailId : function (id) {
         	'use strict';
@@ -17,14 +16,6 @@ var globals = (function () {
         getTrailId : function () {
         	'use strict';
             return trailId;
-        },
-        setNewTrail : function (val) {
-        	'use strict';
-            newTrail = val;
-        },
-        testNewTrail : function () {
-        	'use strict';
-            return newTrail;
         }
     };
 })();
@@ -100,7 +91,7 @@ $('#homePage').live('pageinit', function() {
 $('#selectPage').live('pageinit', function(event) {
 	'use strict';
 	// console.log("Entering selectPage pageinit");
-	globals.setNewTrail(true);
+	localStorage.setItem("newTrail", Number(1));
 	buildTrailSelectionList();
 	// console.log("Leaving selectPage pageinit");
 });
@@ -112,8 +103,17 @@ $('#trailDirectionsPage').live("pageshow", function() {
 	'use strict';
 	//console.log("Entering trailDirectionsPage.pageshow.function");
 	var trailhead = globals.getTrailId();
-	console.log("trailDirectionsPage.pageshow: newTrail is " + globals.testNewTrail());
-	buildTrailDirectionsPage(trailhead);
+	alert("trailDirectionsPage.pageshow: newTrail = " + localStorage.getItem("newTrail"));
+	var myNewTrail = localStorage.getItem("newTrail");
+	console.log("trailDirectionsPage.pageshow: myNewTrail = " + myNewTrail);
+	if (myNewTrail > 0) {
+		alert("trailDirectionsPage.pageshow: so build trailDirectionsPage");
+		localStorage.setItem("newTrail", Number(0));
+		buildTrailDirectionsPage(trailhead);
+		alert("trailDirectionsPage.pageshow: have built trailDirections page and set newTrail to " + localStorage.getItem("newTrail"));
+	} else {
+		alert("Need to refresh the trail directions page");
+	}
 	// console.log("Leaving trailDirectionsPage.pageshow");
 }); // end #trailDirectionsPage.live("pageshow" ...
 
@@ -148,7 +148,7 @@ $('#googleMaps').live('click', function() {
 			destinationLatitude + "+" + destinationLongitude +
 			"+(" + destinationName + ")";
 		console.log("googleMaps.live.click: temphref = " + temphref);
-		//location.href = temphref;
+		location.href = temphref;
 	});
 	//navigator.geolocation.getCurrentPosition(locSuccess, locError);
 	//console.log("googleMaps.live.click: returned from getCurrentPosition");
