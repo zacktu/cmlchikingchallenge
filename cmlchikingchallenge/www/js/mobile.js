@@ -103,19 +103,15 @@ $('#selectPage').live('pageinit', function(event) {
  */
 $('#trailDirectionsPage').live("pageshow", function() {
 	'use strict';
-	//console.log("Entering trailDirectionsPage.pageshow.function");
+	// console.log("Entering trailDirectionsPage.pageshow.function");
 	var trailhead = globals.getTrailId();
-	// alert("trailDirectionsPage.pageshow: newTrail = " + localStorage.getItem("newTrail"));
 	var myNewTrail = localStorage.getItem("newTrail");
 	var myTrailDirectionsHTML;
-	console.log("trailDirectionsPage.pageshow: myNewTrail = " + myNewTrail);
+	// console.log("trailDirectionsPage.pageshow: myNewTrail = " + myNewTrail);
 	if (myNewTrail > 0) {
-		// alert("trailDirectionsPage.pageshow: so build trailDirectionsPage");
 		localStorage.setItem("newTrail", Number(0));
 		buildTrailDirectionsPage(trailhead);
-		// alert("trailDirectionsPage.pageshow: have built trailDirections page and set newTrail to " + localStorage.getItem("newTrail"));
 	} else {
-		// alert("Need to refresh the trail directions page");
 		myTrailDirectionsHTML = localStorage.getItem("trailDirectionsHTML");
 		$('#trailDirectionsPageCONTENT').html(myTrailDirectionsHTML);
 
@@ -127,7 +123,7 @@ $('#trailDirectionsPage').live("pageshow", function() {
  * t r a i l L i n k C l i c k e d
  */
 function trailLinkClicked(trailId) {
-	//console.log("trailLinkClicked: trailId is " + trailId);
+	// console.log("trailLinkClicked: trailId is " + trailId);
 	globals.setTrailId(trailId);
 	$.mobile.changePage($('#trailDirectionsPage'), {});
 } // end linkClickedlistingNumber
@@ -139,24 +135,24 @@ $('#googleMaps').live('click', function() {
 	var myTrailId = globals.getTrailId(),
 		destinationLatitude,
 		destinationLongitude;
-	console.log("googleMaps.live.click: trailId is " + myTrailId);
-	alert("Android users should use their device's Back button to return to "+
-			"the trail directions; iPhone users should use their browser's " +
-			"Back arrow.");
+	// console.log("googleMaps.live.click: trailId is " + myTrailId);
+	alert("Android users navigating with Google Maps may use their " +
+			"device's Back button to view the trail directions.  " +
+			"Browser users may use their browser's Back arrow.");
 	$.getJSON("trails.json", function(data) {
 		destinationLatitude = data.trails[myTrailId].latitude;
 		destinationLongitude = data.trails[myTrailId].longitude;
 		destinationName = data.trails[myTrailId].name;
-		console.log("locSuccess: destinationLatitude = " + destinationLatitude);
-		console.log("locSuccess: destinationLongitude = " + destinationLongitude);
-		console.log("googleMaps.live.click: this is where we show the map");
+		// console.log("locSuccess: destinationLatitude = " + destinationLatitude);
+		// console.log("locSuccess: destinationLongitude = " + destinationLongitude);
+		// console.log("googleMaps.live.click: this is where we show the map");
 		//location.href = "https://maps.google.com/?q=loc:35.4607+-82.3681";
 		var temphref = "https://maps.google.com/?q=loc:" + 
 			destinationLatitude + "+" + destinationLongitude +
 			"+(" + destinationName + ")";
-		console.log("googleMaps.live.click: temphref = " + temphref);
+		// console.log("googleMaps.live.click: temphref = " + temphref);
 		location.href = temphref;
 	});
 	//navigator.geolocation.getCurrentPosition(locSuccess, locError);
-	//console.log("googleMaps.live.click: returned from getCurrentPosition");
+	// console.log("googleMaps.live.click: returned from getCurrentPosition");
 }); // end #googleMaps.live('click' ...)
