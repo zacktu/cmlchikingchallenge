@@ -4,3 +4,6 @@ I have now committed v1.1, which is the version I have provided Peter for the CM
 
 I've tried the Google Maps direction finder, and I like mine better.  By the way, what would be needed is to have https://maps.google.com/?q=loc:35.4607+-82.3681 to go to a site whose latitude and longitude are known.  That would make it easy because I know the latitude and longitude of my destination sites.
 
+16 May
+I've deleted the large image files and the extraneous html files and will push these to github.  I'm hoping that github will now remove these files so that the repository doesn't become so big.
+
